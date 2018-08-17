@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Viewer 360</title>
+    <script src="../dist/es6/v360.js"></script>
+    <style>
+
+        html, body{ height: 100%;}
+
+        #v360{
+            width: 100%;
+            height: 50%;
+            max-width: 480px;
+            max-height: 480px;
+        }
+
+        #v360_2{
+            position: relative;
+            width: 100%;
+            max-width: 480px;
+        }
+
+        #v360_2 div{
+            width: 100%;
+            padding-top: 68%;
+        }
+
+        #v360_2 canvas{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="v360" v360="{'srcs': 'images/rad_zoom_#{frame}.jpg', 'frames': 34, 'currentImg': 20}"></div>
+    <div id="v360_2">
+        <div v360="{'sprite': 'images/sprite/sprite.png', 'frames': 34, 'currentImg': 0}"></div>
+    </div>
+</body>
+</html>
