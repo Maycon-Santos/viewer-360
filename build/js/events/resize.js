@@ -7,14 +7,12 @@ V360.prototype.onresize = function(props){
 
         if($canvas.width != $target.offsetWidth || $canvas.height != $target.height){
 
-            const ctx = props.canvas.ctx;
-            const imgs = props.imgs;
-            const currentImg = props.currentImg;
+            const currentFrame = props.currentFrame;
 
             this.resizeCanvas($target, $canvas);
-            this.resizeImage($canvas, imgs);
+            this.resizeImage(props);
 
-            this.setImage($canvas, ctx, imgs, currentImg, props.frames);
+            this.setImage(props, currentFrame);
             
         }
 

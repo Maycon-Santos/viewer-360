@@ -19,27 +19,30 @@
 
         #v360_2{
             position: relative;
-            width: 100%;
-            max-width: 480px;
+            height: 100%;
+            /* width: 100%;
+            max-width: 480px; */
         }
 
         #v360_2 div{
-            width: 100%;
-            padding-top: 68%;
+            width: 600px;
+            height: 800px;
+            /* padding-top: 68%; */
         }
 
-        #v360_2 canvas{
+        /* #v360_2 canvas{
             position: absolute;
             left: 0;
             top: 0;
-        }
+        } */
 
     </style>
 </head>
 <body>
-    <div id="v360" v360="{'srcs': 'images/rad_zoom_#{frame}.jpg', 'frames': 34, 'currentImg': 20}"></div>
+    <div id="v360" v360="{'srcs': 'images/rad_zoom_#{frame}.jpg', 'frames': 34, 'currentFrame': 20}"></div>
     <div id="v360_2">
-        <div v360="{'sprite': 'images/sprite/sprite.png', 'frames': 34, 'currentImg': 0}"></div>
+        <div v360="{'sprite': 'images/sprite/sprite.png', 'frames': 34, 'currentFrame': 0}"></div>
     </div>
+    <div style="width: 500px; height: 500px;"></div>
 </body>
 </html>

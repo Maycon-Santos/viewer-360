@@ -17,12 +17,12 @@ V360.prototype.onmousemove = function(props){
 
             let roundMouseMoved = Math.round(mouseMoved);
 
-            props.currentImg += roundMouseMoved / Math.abs(roundMouseMoved);
+            props.currentFrame += roundMouseMoved / Math.abs(roundMouseMoved);
 
-            if(props.currentImg > props.frames - 1) props.currentImg = 0;
-            if(props.currentImg < 0) props.currentImg = props.frames - 1;
+            if(props.currentFrame > props.frames - 1) props.currentFrame = 0;
+            if(props.currentFrame < 0) props.currentFrame = props.frames - 1;
 
-            this.setImage(props.canvas.target, props.canvas.ctx, props.imgs, props.currentImg, props.frames);
+            this.setImage(props, props.currentFrame);
 
         }
 
