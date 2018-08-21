@@ -8,6 +8,7 @@ V360.prototype.preload = function(props){
 
         img.onload = this.onload(props);
 
+        // If is sprite
         if(props.sprite){
             img.src = props.sprite;
             break;

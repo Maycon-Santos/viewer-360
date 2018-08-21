@@ -1,5 +1,7 @@
 V360.prototype.setImage = function(props, n){
 
+    if(!props.allLoaded) return;
+
     const $canvas = props.canvas.target;
     const ctx = props.canvas.ctx;
     const imgs = props.imgs;

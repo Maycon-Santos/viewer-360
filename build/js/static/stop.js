@@ -1,3 +1,4 @@
+// Stop the viewer (Do not confuse with $DOM.v360.stopAnimation)
 V360.prototype.stop = function(){
 
     const $v360 = document.querySelectorAll('[v360], [V360]');

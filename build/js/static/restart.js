@@ -1,3 +1,4 @@
+// Restart the viewer
 V360.prototype.restart = function(){
 
     const $v360 = document.querySelectorAll('[v360], [V360]');

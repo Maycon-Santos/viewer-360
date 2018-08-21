@@ -7,11 +7,16 @@ V360.prototype.V360DOM = function($target, props){
     const mousedownHandle = this.onmousedown(props);
     const mouseupHandle = this.onmouseup(props);
     const mousemoveHandle = this.onmousemove(props);
-    const resizeHandle = this.onresize(props);    
+    const resizeHandle = this.onresize(props);
 
     $canvas.addEventListener('mousedown', mousedownHandle);
     window.addEventListener('mouseup', mouseupHandle);
     window.addEventListener('mousemove', mousemoveHandle);
+    
+    $canvas.addEventListener('touchstart', mousedownHandle);
+    window.addEventListener('touchend', mouseupHandle);
+    window.addEventListener('touchmove', mousemoveHandle);
+
     window.addEventListener('resize', resizeHandle);
 
     $target.v360 = { played: true };
@@ -30,6 +35,11 @@ V360.prototype.V360DOM = function($target, props){
         $canvas.removeEventListener('mousedown', mousedownHandle);
         window.removeEventListener('mouseup', mouseupHandle);
         window.removeEventListener('mousemove', mousemoveHandle);
+
+        $canvas.removeEventListener('touchstart', mousedownHandle);
+        window.removeEventListener('touchend', mouseupHandle);
+        window.removeEventListener('touchmove', mousemoveHandle);
+
         window.removeEventListener('resize', resizeHandle);
 
         // Remove canvas of the DOM
@@ -74,10 +84,11 @@ V360.prototype.V360DOM = function($target, props){
 
                 let direction = to / Math.abs(to);
                 let nextFrame = props.currentFrame + ~~(progress * to);
+                nextFrame = Math.abs(nextFrame / Math.abs(nextFrame));
 
-                props.currentFrame += nextFrame / Math.abs(nextFrame) * direction;
-
-                console.log(props.currentFrame);
+                if(direction < 0) nextFrame = -nextFrame;
+                
+                props.currentFrame += nextFrame;
 
             }
 
@@ -88,7 +99,7 @@ V360.prototype.V360DOM = function($target, props){
 
             if(stopAnimation) return props.allowDrag = !(stopAnimation = false);
 
-            if(to == Infinity) return requestAnimationFrame(animate.bind(this));
+            if(to == Infinity || to == -Infinity) return requestAnimationFrame(animate.bind(this));
 
             if(timeFraction < 1) return requestAnimationFrame(animate.bind(this));
             else if(typeof callback == 'function')return callback();
@@ -101,5 +112,7 @@ V360.prototype.V360DOM = function($target, props){
     }
 
     $target.v360.stopAnimation = () => stopAnimation = true;
+
+    $target.v360.onload = null;
 
 }
