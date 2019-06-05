@@ -253,7 +253,10 @@ V360.prototype.setImage = function (props, n) {
         ctx.drawImage($img, pos, 0, $img.width, $img.height);
 
         ctx.clearRect(spriteWidth, 0, $canvas.width - spriteWidth, $canvas.height);
-    } else ctx.drawImage($img, 0, 0, $img.width, $img.height);
+    } else {
+        console.log($img, n);
+        ctx.drawImage($img, 0, 0, $img.width, $img.height);
+    }
 };
 'use strict';
 
